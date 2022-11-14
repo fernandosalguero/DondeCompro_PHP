@@ -1,0 +1,11 @@
+{
+    "name": "dondedompro/dondedompro",
+    "require": {
+
+        "phpmailer/phpmailer": "~6.1",
+        "mercadopago/dx-php": "2.2.1"
+
+
+    }
+
+}

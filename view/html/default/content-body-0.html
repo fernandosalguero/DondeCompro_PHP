@@ -1,0 +1,74 @@
+<script src="view/assets/js/validar.js?version=1.05"> </script>
+
+<!-- Content body -->
+<div class="content-body m-0 content-login">
+    <!-- Content -->
+
+    <div class="d-flex flex-column align-items-center">
+
+        <div class="col-sm-12 col-md-6 col-xl-4">
+
+            <div class="card card-login">
+
+                <figure class="text-center" style="width:100%; height: 160px; margin-top: 50px;">
+
+                    <img src="view/assets/media/image/logo-2.png" alt="logo" width="150">
+
+                </figure>
+
+                <div class="card-body">
+
+                    <h5 class="card-title text-center">Iniciá Sesión</h5>
+
+                    <form action="controller/procesar_login.php" onsubmit="return validarLogin();" method="POST">
+                        <div class="form-group"></div>
+                        <div class="form-group">
+                            <p id="texlogin" class="texto-rojo-peque"></p>
+                            <input type="text" name="nombre_u" onchange="validarNombreLogin()" class="form-control"
+                                id="nomail" placeholder="Usuario o email" required autofocus>
+                        </div>
+                        <div class="form-group d-block justify-content-around">
+                            <input type="password" name="clave_u" class="form-control" placeholder="Contraseña"
+                                required>
+                        </div>
+                        <div class="form-group d-flex flex-column align-items-center">
+                            <div class="custom-control custom-checkbox custom-checkbox-info">
+                                <input type="checkbox" name="recordar" class="custom-control-input" id="customCheck5"
+                                    checked>
+                                <label class="custom-control-label texto-verde text-center"
+                                    for="customCheck5">Recordar</label>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group d-flex flex-column align-items-center">
+
+                            <button class="btn btn-success btn-block">INGRESÁ</button>
+                            <hr>
+                            <a class="texto-verde" id="a-per2" href="view/recuperar-clave.php">¿Olvidaste tu
+                                contraseña?</a>
+                        </div>
+
+                        <!-- <div class="form-group d-flex justify-content-around">
+                            <p class="texto-verde">¿No tenés una cuenta?</p>
+                        </div> -->
+                        <div class="form-group d-flex justify-content-lg-around">
+                            <a href="view/registro.php" id="a-per-2" style="color: white !important;"
+                                class="btn btn-success btn-block">¡REGISTRATE!</a>
+                            <!-- <a href="view/registrar-usuario.php"  id="a-per-2" class="btn btn-success btn-block">¡REGISTRATE!</a> -->
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- ./ Content -->
+
+</div>
+<!-- ./ Content body -->

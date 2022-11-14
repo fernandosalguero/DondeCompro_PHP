@@ -1,0 +1,416 @@
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="view/assets/js/cuenta-negocio.js?version=1.05"></script>
+<script src="view/assets/js/ubicacion.js?version=1.05"></script>
+<div class="content-body">
+    <!-- Content -->
+    <div class="content ">
+
+        <div class="page-header">
+            <div>
+                <h3 class="">ADMINISTRAR CUENTA</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <figure class="text-center"> <img src="view/assets/media/image/ositos/ajustes.png"></figure>
+                        <div class="nav nav-pills flex-column" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+
+                            <a class="nav-item nav-link active" id="a-per-2" id="v-pills-home-tab" data-toggle="pill"
+                                href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true">INFORMACIÓN</a>
+
+                            <a class="nav-item nav-link" id="a-per-2" id="v-pills-profile-tab" data-toggle="pill"
+                                href="#v-pills-foto" role="tab" aria-controls="v-pills-foto"
+                                aria-selected="false">IMAGEN</a>
+
+                            <a class="nav-item nav-link" id="a-per-2" id="v-pills-profile-tab" data-toggle="pill"
+                                href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
+                                aria-selected="false">CONTRASEÑA</a>
+
+                        </div>
+                    </div>
+                    <div class="col-md-9 align-content-center">
+                        <div class="tab-content" id="v-pills-tabContent">
+
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card">
+
+                                            <div class="card col-md-6 mb-0">
+                                                <h6 class="card-title texto-verde text-left mb-4">INFORMACIÓN DE LA
+                                                    CUENTA</h6>
+                                                <div class="d-flex mb-3 my-0">
+                                                    <div class="card-per">
+                                                        <h6 class="text-center">IMAGEN</h6>
+                                                        <img width="150" src=<?php cargarImagen() ?> alt="...">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="d-flex">
+
+                                                    <table class="d-flex align-self-center">
+
+                                                        <tr class='tr-per'>
+                                                            <td style="padding: 5px;">NOMBRE:</td>
+                                                            <td style="padding: 5px;"><small class="texto-verde">
+                                                                    <?php echo $_SESSION["nombre"]; ?>
+                                                                </small> </td>
+                                                        </tr>
+
+                                                        <tr class='tr-per'>
+                                                            <td style="padding: 5px;">CORREO:</td>
+                                                            <td style="padding: 5px;"><small class="texto-verde">
+                                                                    <?php echo $_SESSION["correo"]; ?>
+                                                                </small> </td>
+                                                        </tr>
+
+                                                        <tr class='tr-per'>
+                                                            <td style="padding: 5px;">CUENTA:</td>
+                                                            <td style="padding: 5px;"><small
+                                                                    class="texto-verde">COMERCIO</small> </td>
+                                                        </tr>
+
+                                                        <?php 
+                                            
+                                            echo cargarInfoNegocio();
+                                            
+                                            ?>
+
+                                                    </table>
+
+                                                </div>
+
+
+
+
+                                            </div>
+
+                                            <hr class="hr-per-2">
+
+                                            <div class="card col-md-6 mb-0">
+                                                <h6 class="card-title text-secondary">ACTUALIZAR INFORMACIÓN DE USUARIO</h6>
+                                                <form onsubmit="return cambiarDatos()" method="POST"
+                                                    action="controller/actualizar_info.php">
+                                                    <div class="form-group">
+
+                                                        <label>Nombre</label>
+                                                        <input type="text" class="form-control" name="nombre"
+                                                            onchange="fNombre()" id="nombre" value=<?php echo
+                                                            $_SESSION["nombre"]; ?> placeholder=
+                                                        <?php echo $_SESSION["nombre"]; ?> required>
+                                                        <p class="form-text text-center" id="enombre"></p>
+
+                                                    </div>
+
+
+                                                    <div class="form-group">
+
+                                                        <label>Correo</label>
+                                                        <input type="email" onchange="fCorreo()" name="correo"
+                                                            id="correo" class="form-control" value=<?php echo
+                                                            $_SESSION["correo"]; ?> placeholder=
+                                                        <?php echo $_SESSION["correo"]; ?> required>
+                                                        <p class="form-text text-center" id="ecorreo"></p>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label><small>Escribí tu contraseña para confirmar los cambios
+                                                            </small> </label>
+                                                        <input type="password" name="clave" id="clave"
+                                                            class="form-control" required>
+                                                        <p class="form-text text-center" id="ecorreo"></p>
+
+                                                    </div>
+
+
+                                                    <input type="submit" class="btn btn-success btn-sm"
+                                                        value="GUARDAR CAMBIOS">
+
+                                                </form>
+                                            </div>
+
+                                            <hr class="hr-per-2">
+
+
+                                            <div class="card col-md-6 mb-0">
+
+                                                <h6 class="card-title text-secondary">ACTUALIZAR UBICACIÓN</h6>
+                                                <form method="POST"
+                                                    action="controller/actualizar_ubicacion_negocio.php">
+
+
+                                                    <div class="form-group">
+
+                                                        <label for="provincia-registro">Provincia:</label>
+
+                                                        <select class='form-control' name='provincia-registro'
+                                                            id='provincias-registro' onchange="cargarMunicipios()">
+
+                                                            <option selected value="seleccionar">
+                                                                Seleccionar
+                                                            </option>
+
+                                                        </select>
+
+                                                    </div>
+
+
+                                                    <div class="form-group" style="display: none;"
+                                                        id='mMunicipios-registro'>
+
+                                                        <label for="municipios">Departamento:</label>
+                                                        <select class='form-control' name='municipio-registro'
+                                                            id='municipios-registro' onchange="cargarLocalidades()">
+
+                                                            <option selected value='seleccionar'>
+                                                                Seleccionar
+                                                            </option>
+                                                        </select>
+
+                                                    </div>
+
+                                                    <div class="form-group" style="display: none;"
+                                                        id='lLocalidades-registro'>
+
+                                                        <label for="localidades">Localidad:</label>
+                                                        <select class='form-control' name='localidades-registro'
+                                                            id='localidades-registro'
+                                                            onchange="cargarCentroideMunicipio(); validarActualizacionUbicacionDatos();">
+
+                                                            <option selected value='seleccionar'>
+                                                                Seleccionar
+                                                            </option>
+
+                                                        </select>
+
+                                                        <input type="hidden" name="lat" id="lat" class="form-control"
+                                                            require>
+                                                        <input type="hidden" name="lon" id="lon" class="form-control"
+                                                            require>
+
+
+                                                    </div>
+
+                                                    <div class="form-group" id="direccion">
+
+                                                        <label for="Direccion">Dirección:</label>
+                                                        <input type="text" name="direccion" id="dir"
+                                                            class="form-control" onkeyup="mostrarGuardar()"
+                                                            onclick="mostrarGuardar()" required>
+
+                                                    </div>
+
+
+                                                    <input type="submit" class="btn btn-success btn-sm"
+                                                        value="GUARDAR CAMBIOS" style="display: none;"
+                                                        id="guardarUbicacion">
+
+                                                </form>
+
+                                            </div>
+
+
+                                            <hr class="hr-per-2">
+
+                                            <div class="card col-md-6 mb-0">
+
+                                                <h6 class="card-title text-secondary">ACTUALIZAR DATOS ADICIONALES DE NEGOCIO</h6>
+                                                <form onsubmit="return infoNegocio()" method="POST"
+                                                    action="controller/info_negocio.php">
+
+
+                                                    <div class="form-group">
+
+                                                        <label for="envios">¿Hacen envíos?</label>
+                                                        <select class="form-control" name="envios" id="envios">
+                                                            <option value="si">
+                                                                Sí
+                                                            </option>
+                                                            <option value="no">
+                                                                No
+                                                            </option>
+
+                                                        </select>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label for="pago">¿Qué métodos de pagon reciben?</label>
+
+                                                        <select name="pago" id="pago" class="form-control">
+
+                                                            <option value="efectivo">
+                                                                Solo Efectivo
+                                                            </option>
+
+                                                            <option value="efectivo y tarjetas">
+                                                                Efectivo y tarjetas.
+                                                            </option>
+
+                                                        </select>
+
+                                                    </div>
+
+
+                                                    <div class="form-group">
+
+                                                        <label for="telefono">Número de teléfono:</label>
+                                                        <input type="text" name="telefono" class="form-control"
+                                                            id="telefono">
+
+                                                    </div>
+
+
+                                                    <input type="submit" class="btn btn-success btn-sm"
+                                                        value="GUARDAR CAMBIOS">
+
+                                                </form>
+
+                                            </div>
+
+                                            <hr class="hr-per-2">
+
+                                        </div>
+
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title texto-verde">CAMBIAR CONTRASEÑA</h6>
+                                        <form action="controller/cambiar_clave.php" method="POST"
+                                            onsubmit="return cambiarClave()">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Tu contraseña actual</label>
+                                                        <input type="password" name="clave" id="claveold"
+                                                            class="form-control" required>
+                                                        <p id="eclave" class="text-muted"><small></small></p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Nueva contraseña</label>
+                                                        <input type="password" name="nueva" id="newclave"
+                                                            class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Repetí tu nueva contraseña</label>
+                                                        <input type="password" name="repite" id="rclave"
+                                                            onchange="frClave()" class="form-control" required>
+                                                        <p id="erclave" class="text-muted"><small></small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="submit" class="btn btn-success btn-sm" value="CAMBIAR">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-foto" role="tabpanel"
+                                aria-labelledby="v-pills-foto-tab">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card">
+
+                                            <div class="card align-items-center">
+                                                <h6 class="card-title texto-verde text-left">
+                                                    <?php echo $_SESSION["nombre"]; ?>
+                                                </h6>
+
+                                                <div class="d-flex mb-3">
+
+                                                    <div class="card-per">
+                                                        <h6 class="text-center">IMAGEN</h6>
+                                                        <img width="100" src=<?php cargarImagen() ?> alt="...">
+                                                    </div>
+
+
+                                                </div>
+
+
+
+                                                <form form action="controller/cambiar_imagen.php" method="POST"
+                                                    enctype="multipart/form-data"">
+                                            <div class=" row">
+                                                    <div class="col-sm-auto">
+                                                        <div class="form-group">
+
+                                                            <div class="custom-file">
+                                                                <input type="file" class="custom-file-input"
+                                                                    name="imagen" id="customFile">
+                                                                <label class="custom-file-label"
+                                                                    for="customFile">Seleccionar</label>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="form-group">
+
+                                                            <input type="submit" class="btn btn-success btn-block"
+                                                                value="GUARDAR">
+
+                                                        </div>
+
+                                                        <div>
+                                                            <a href="controller/borrar_imagen.php" id="a-per-3"
+                                                                class="btn btn-outline-dark btn-block">Eliminar imagen
+                                                                actual</a>
+                                                        </div>
+
+                                                    </div>
+                                            </div>
+                                            </form>
+
+
+
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Footer -->
+<footer class="content-footer">
+
+    <div class="text-center texto-blanco">
+        © 2020 - <a href="https://dondecompro.ar/quienes-somos" id="a-per" target="_blank">DóndeCompro? </a>
+    </div>
+    <div class="text-center texto-blanco"> Todos los derechos reservados </div>
+</footer>
+<!-- ./ Footer -->
+</div>

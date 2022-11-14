@@ -1,0 +1,475 @@
+<?php 
+ 
+ eliminarListado();
+ 
+ ?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+
+
+<script src="view/assets/js/precio.js?version=1.05"></script>
+
+<link rel="stylesheet" href="view/assets/css/animations.css">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
+
+
+<script>
+
+    $(() => {
+
+        var vueApp;
+        var mobile = false;
+        let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+
+        if (vw <= 1200) {
+            mobile = true;
+        } else {
+            mobile = false;
+        }
+        $(window).resize(function () {
+            vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+            if (vw <= 1200) {
+                mobile = true;
+            } else {
+                mobile = false;
+            }
+            vueApp.update(mobile);
+            // console.log(mobile);
+
+        });
+
+        vueApp = new Vue({
+            el: '#content-comparador',
+            data: {
+                mobile: mobile,
+                btnNextMessage: 'Ir a Listado',
+                btnBackMessage: '',
+                idx: 0,
+                productosListado: 0,
+                showProductosListado: false
+            },
+            methods: {
+                update: function (mobile) {
+                    this.mobile = mobile;
+                    console.log('en update', mobile)
+                },
+                next: function () {
+
+                    $('#next-carousel').trigger('click');
+
+                },
+                back: function () {
+
+                    $('#prev-carousel').trigger('click');
+                },
+                changeMessage() {
+                    switch (this.idx) {
+                        case 0:
+                            this.btnNextMessage = 'Ir a Listado';
+                            this.btnBackMessage = '';
+                            break;
+                        case 1:
+                            this.btnNextMessage = 'Ir a Comparador';
+                            this.btnBackMessage = 'Ir a Buscador';
+                            break;
+                        case 2:
+                            this.btnNextMessage = 'Ir a Buscador';
+                            this.btnBackMessage = 'Ir a Listado';
+                            break;
+                        default:
+                            break;
+
+                    }
+                },
+                setProductosListado(num) {
+                    this.productosListado = num;
+                },
+                setIdx(num) {
+                    this.idx = num;
+                }
+            }
+        });
+
+        document.addEventListener('contadorProducto', (event) => {
+            console.log(event.detail);
+            let cantidad = event.detail.cantidad;
+            vueApp.setProductosListado(cantidad);
+
+            // se revisa si el elemento de la lista tiene mas de 0 para activar hover de ocultacion de lista de busqueda
+            // en ambos sentidos: agregar y elimminar productos del listado
+            // let element = document.getElementById('miListado');
+            //  console.log(element.childNodes.length);
+            if (cantidad >= 1) {
+
+                $('#lista-comparacion').hover((event) => {
+
+
+                    if (event.type == 'mouseenter') {
+                        // console.log('mouseenter');
+                        // ocultar busqueda y mostrar listado
+                        $('#productos').removeClass('element-fadeIn', 300, "easeInOutQuad");
+                        $('#productos').addClass('element-fadeOut', 300, "easeInOutQuad");
+                        $('.flip-card-inner-buscador').addClass('do-flip');
+
+                    } else {
+                        // console.log('mouseleave');
+                        // mostrar busqueda y ocultar listado
+                        $('#productos').removeClass('element-fadeOut', 300, "easeInOutQuad");
+                        $('#productos').addClass('element-fadeIn', 1000, "easeInOutQuad");
+                        $('.flip-card-inner-buscador').removeClass('do-flip');
+
+                    }
+
+                });
+            } else {
+
+                $('#lista-comparacion').off('mouseenter mouseleave'); // resetea el evento de hover
+
+                console.log('resetea flip')
+                $('.flip-card-inner-buscador').removeClass('do-flip');
+                $('#productos').addClass('element-fadeIn', 300, "easeInOutQuad");
+
+            }
+
+        });
+
+        document.addEventListener('comparador', (event) => {
+            console.log('comparador disparado')
+            vueApp.next(); //mobile carousel
+        });
+
+        document.addEventListener('buscar', (event) => {
+            vueApp.back(); //mobile carousel
+        });
+
+        document.addEventListener('error_preciosclaros', (event) => {
+            console.log('modal fail mostrando')
+            try {
+                $('#modal-fail').show('slow', () => {
+
+                });
+
+            } catch { }
+        })
+
+        $('#carousel-mobile').on('slide.bs.carousel', function (e) {
+            console.log(e.direction)
+            let idx = vueApp.idx;
+            if (e.direction == 'left') {
+                if (idx < 2)
+                    idx++;
+                else
+                    idx = 0;
+                vueApp.setIdx(idx);
+                // console.log(idx);
+                vueApp.changeMessage();
+
+            } else {
+                if (idx > 0)
+                    idx--;
+                vueApp.setIdx(idx);
+                // console.log(idx);
+                vueApp.changeMessage();
+            }
+        });
+
+        vueTitle = new Vue({
+            el: '#title',
+            data: {
+                mobile,
+                show0: true,
+                show1: false,
+                show2: false
+            }
+        });
+        console.log(mobile)
+        if (mobile) {
+            $('#title-ppal').css('margin-bottom', '50px');
+            setTimeout(() => {
+                vueTitle.show0 = false;
+                $()
+                setTimeout(() => {
+                    vueTitle.show1 = true;
+                }, 1000);
+                setTimeout(() => {
+                    vueTitle.show1 = false;
+                    setTimeout(() => {
+                        vueTitle.show2 = true;
+                    }, 1000);
+                    setTimeout(() => {
+                        vueTitle.show0 = false;
+                        vueTitle.show1 = false;
+                        vueTitle.show2 = false;
+                        setTimeout(() => {
+                            $('#title-ppal').css('margin-bottom', '0px');
+                        }, 500);
+                    }, 5000);
+                }, 3000);
+            }, 3000);
+        }
+
+        // agrego listeners para el modal de fail
+        $('#btn-close-modal-error_0').on('click', (e) => {
+            console.log('cerrando modal de fail 0')
+            $('#modal-fail').hide();
+        });
+        $('#btn-close-modal-error_1').on('click', (e) => {
+            console.log('cerrando modal de fail 1')
+            $('#modal-fail').hide();
+        });
+    });
+
+</script>
+
+
+<!-- Content body -->
+<div class="content-body">
+
+    <div class="loader-comparador" id="preloaderComparador">
+        <div class="loader-comparador-icon"></div>
+        <span>Cargando...</span>
+    </div>
+    <!-- Content -->
+    <div class="content">
+        <div class="row">
+
+            <div class="col-md-12" id="title" style="position: relative;">
+
+                <h1 v-if="!mobile" class="text-center">¡ENCONTRÁ EL MEJOR PRECIO!</h1>
+                <p v-if="!mobile" class="text-center">Buscá los productos que querés, agregalos a tu listado de compras,
+                    y descubrí dónde comprarlos cerca tuyo y al mejor precio
+                </p>
+                <h5 v-if="mobile" id="title-ppal" class="text-center">¡ENCONTRÁ EL MEJOR PRECIO!</h5>
+                <div v-if="mobile" class="text-center">
+                    <transition name="fade">
+                        <p style="position: absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; text-align: center; top: 20px;"
+                            v-if="show0" class="text-center">Buscá los
+                            productos que querés</p>
+                    </transition>
+
+                    <transition name="fade">
+                        <p style="position: absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; text-align: center; top: 20px;"
+                            v-if="show1" class="text-center">agregalos
+                            a tu listado
+                            de compras
+                        </p>
+                    </transition>
+
+                    <transition name="fade">
+                        <p style="position: absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; text-align: center; top: 20px;"
+                            v-if="show2" class="text-center">
+                            y descubrí dónde comprarlos cerca tuyo y al mejor precio
+                        </p>
+                    </transition>
+                </div>
+                <hr class="hr-per">
+
+            </div>
+
+        </div>
+
+        <div id="content-comparador">
+
+            <div v-if="mobile" class="row justify-content-between"
+                style="margin-top:6px; margin-bottom:8px; padding-left: 18px; padding-right:18px;">
+                <div class="col-6" style="padding-left: 0px; padding-right:0px; text-align: start;">
+                    <div style="position: relative">
+                        <button v-on:click="back()" v-show="idx > 0 && btnBackMessage != ''" class="btn btn-primary"
+                            style="padding-left: 8px; padding-right: 8px;" id="next-btn">{{btnBackMessage}}</button>
+
+                        <span v-if="idx==2" id="badge-listado"
+                            style="position:absolute; top: -8px; left: 90px; border-radius: 50%; height:24px; width:24px; background: #fe5a82; color: white; border: 1px solid #ffffff; text-align:center;">
+                            <p style=" font-weight: 600;">
+                                {{productosListado}}
+                            </p>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-6" style="padding-left: 0px; padding-right:0px; text-align: end;">
+                    <div style="position: relative">
+                        <button v-on:click="next()" class="btn btn-primary" id="next-btn"
+                            style="padding-left: 8px; padding-right: 8px;">{{btnNextMessage}}</button>
+
+                        <span v-if="idx == 0" id="badge-listado"
+                            style="position:absolute; top: -8px; right: -10px; border-radius: 50%; height:24px; width:24px; background: #fe5a82; color: white; border: 1px solid #ffffff; text-align:center;">
+                            <p style=" font-weight: 600;">
+                                {{productosListado}}
+                            </p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div v-show="idx == 0" v-bind:style="{'margin-right': mobile == true ? '0px !important' : '20px !important', 'margin-left': mobile == true ? '0px !important' : '20px !important' }" class="row justify-content-center" style="background-color: #00000021;
+            border-radius: 5px !important;
+            border: solid 1px #af43af21;
+            max-width: 100%;
+            padding: 6px;
+            margin-bottom: 20px;
+            box-shadow: 1px -1px 16px 0px rgba(0,96,8,0.62);
+            -webkit-box-shadow: 1px -1px 16px 0px rgba(0,96,8,0.62);
+            -moz-box-shadow: 1px -1px 16px 0px rgba(0,96,8,0.62);">
+                <div v-if="!mobile" class="col-sm-1 col-md-2 col-lg-3 text-center" style="align-self: center;">
+                    <i style="font-size: 26px; margin: 0 auto; color: #f95b7b !important;" class="fas fa-chevron-right"></i>
+                </div>
+                <div class="col-sm-12 col-md-8 col-lg-6">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control buscador" aria-label="Example text with button addon"
+                            placeholder="Buscá tus productos..." autofocus aria-describedby="button-addon1" id="termino"
+                            onkeypress="buscarEnter()">
+                        <div class="input-group-append">
+                            <button class="btn buscador-boton" type="button" id="button-addon1" onclick="buscar(event)">
+                                <i class="ti-search icono-buscar-precio"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="!mobile" class="col-sm-1 col-md-2 col-lg-3 text-center"  style="align-self: center;">
+                    <i style="font-size: 26px; margin: 0 auto; color: #f95b7b !important;" class="fas fa-chevron-left"></i>
+                </div>
+
+            </div>
+
+            <div class="container">
+
+                <div v-if="!mobile" class="row justify-content-between">
+
+
+                    <div class="col-sm-12 col-md-4 col-lg-4 flip-card-buscador">
+                        <div class="flip-card-inner-buscador">
+                            <div class="flip-card-front-buscador">
+
+                                <h5>Tus resultados <i class="fas fa-arrow-down"
+                                        style="margin-left: 5px;  padding-top: 5px; background: none;"></i></h5>
+                                <div id='productos'>
+                                </div>
+
+                            </div>
+
+                            <div class="flip-card-back-buscador">
+                                <h2 style="margin-top: 100px;">Ahora podés comparar tus productos</h2>
+                                <i style="font-size: 78px; color: white !important;" class="fad fa-caret-right"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Hover para ocultar buscador -->
+                    <div class="col-sm-12 col-md-8 col-lg-8" id="lista-comparacion">
+
+                        <div class="row" style="margin-bottom: 120px !important;">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+
+                                <h5>Mi listado<i class="fas fa-arrow-down" style="margin-left: 5px;"></i></h5>
+
+                                <div id='miListado'>
+                                    <div class='lista-productos-vacia mb-1 text-center col-md-12' id="noProductos"
+                                        style="display: block;">NO SE HAN AGREGADO PRODUCTOS AL LISTADO
+                                    </div>
+                                </div>
+                                <button class="btn btn-success btn-block" onclick="comparador()" style="display: none;"
+                                    id='comparador'>¡Compará los precios!
+                                </button>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <h5>Comparador <i class="fas fa-arrow-down" style="margin-left: 5px;"></i></h5>
+                                <div id='mejoresPrecios'>
+
+                                </div>
+                                <div id='paginacionCardsMejoresPrecios'>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div v-else>
+
+                    <div id="carousel-mobile" class="carousel slide" data-interval="false">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+
+                                <h5>Tus resultados<i class="fas fa-arrow-down"
+                                        style="margin-left: 5px; padding-top: 5px; background: none;"></i></h5>
+
+                                <div id='productos'>
+
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+
+                                <h5>Mi Listado<i class="fas fa-arrow-down" style="margin-left: 5px;"></i></h5>
+
+                                <div id='miListado'>
+                                    <div class='lista-productos-vacia mb-1 text-center col-md-12' id="noProductos"
+                                        style="display: block;">NO SE HAN AGREGADO PRODUCTOS AL LISTADO
+                                    </div>
+                                </div>
+                                <button class="btn btn-success btn-block" onclick="comparador()" style="display: none;"
+                                    id='comparador'>¡Compará los precios!
+                                </button>
+                            </div>
+                            <div class="carousel-item">
+
+                                <h5>Comparador<i class="fas fa-arrow-down" style="margin-left: 5px;"></i></h5>
+
+                                <div id='mejoresPrecios'>
+
+                                </div>
+                                <div id='paginacionCardsMejoresPrecios'>
+
+                                </div>
+                            </div>
+                        </div>
+                        <a id="prev-carousel" style="display:none" class="carousel-control-prev"
+                            style="left: -40px !important; width: 40px !important; min-height:50% !important; max-height: 96% !important; background: grey !important; margin-top: 30px !important;"
+                            href="#carousel-mobile" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                        <a id="next-carousel" style="display:none" class="carousel-control-next"
+                            style="right: -40px !important; width: 40px !important; min-height:50% !important; height: 96% !important; background: grey !important; margin-top: 30px !important; "
+                            href="#carousel-mobile" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previo</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- ./ Content -->
+
+</div>
+
+<div id='modal-fail' class='modal' tabindex='-1' role='dialog'>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title'>Precios Claros parece no responder</h5>
+                <button type='button' class='close' id='btn-close-modal-error_0' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>
+            <div class='modal-body' style='text-align: center;'>
+                <img src='view/assets/media/image/precios_claros_fail.png' width='180px'>
+                <p>La base de datos de Precios Claros ha sufrido un error inesperado. Pero podés elegir hacer tus
+                    compras entre los mejores comercios DóndeCompro?</p>
+            </div>
+            <div class='modal-footer'>
+                <button id='btn-close-modal-error_1' type='button' class='btn btn-secondary'>Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ Content body -->

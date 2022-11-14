@@ -1,0 +1,145 @@
+<div class="header d-print-none">
+    <div class="header-container">
+        <div class="header-left">
+            <div class="navigation-toggler">
+                <a href="#" data-action="navigation-toggler">
+                    <i data-feather="menu"></i>
+                </a>
+            </div>
+
+            <div class="header-logo">
+                <a href="https://dondecompro.ar">
+                    <img class="logo" src="view/assets/media/image/logo.png" alt="logo">
+                </a>
+            </div>
+        </div>
+
+        <!--Cuerpo del header-->
+        <div class="header-body">
+
+            <!--Barra de navegación izquierda-->
+            <div class="header-body-left">
+
+                <ul class="navbar-nav">
+                </ul>
+
+            </div>
+            <!--Fin de la barra de navegación izquierda-->
+
+            <!--Barra de navegación derecha-->
+            <div class="header-body-right">
+                <ul class="navbar-nav">
+
+
+                    <!--Item  Pantalla completa -->
+                    <li class="nav-item dropdown d-none d-md-block">
+                        <a href="#" class="nav-link" title="Fullscreen" data-toggle="fullscreen">
+                            <i class="maximize" data-feather="maximize"></i>
+                            <i class="minimize" data-feather="minimize"></i>
+                        </a>
+                    </li>
+                    <!--Fin del item de pantalla completa-->
+
+                    <li class="nav-item">
+                        <figure class="avatar avatar-sm">
+                            <img src=<?php cargarImagen() ?>
+                            class="rounded-circle"
+                            alt="imagen">
+                        </figure>
+                        <span class="ml-2 d-sm-inline d-none text-dark">
+                            <?php echo $_SESSION["nombre"] ?>
+                            <small style="color: #179017;">Usuario Comercio</small>
+                        </span>
+                    </li>
+
+                    <li class="nav-item dropdown" id="dropdown-datos-incompletos">
+                        <a href="#" class="nav-link dropdown-toggle suscripcion" title="Completá tu información"
+                            data-toggle="dropdown">
+                            <span class="ml-2 d-sm-inline d-none" style="position: relative;">
+                                <i class="fas fa-bell fa-2x" style="color: #F12D03 !important;"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-small menuInformacion" style="background-image: linear-gradient(white, #e9ecef 60%, #dde2e6) !important;
+                        background-repeat: no-repeat !important;
+                        border: none !important; box-shadow: #F12D03;
+                        box-shadow: -11px 9px 14px -8px rgba(0,0,0,0.9);
+                        -webkit-box-shadow: -11px 9px 14px -8px rgba(0,0,0,0.9);
+                        -moz-box-shadow: -11px 9px 14px -8px rgba(0,0,0,0.9);">
+                            <div class="dropdown-header text-dark" style="color: black !important;">
+                                <h6>Tu perfil está incompleto</h6>
+                            </div>
+                            <div class="card">
+                                <div class="card-body" style="padding: 0 !important;">
+                                    <ul class="list-group list-group-flush text-center">
+                                        <p class="text-dark">
+                                            Hacé click en <i class="fas fa-cog"></i> Administrar Cuenta
+                                        </p>
+                                        <p class="text-dark">
+                                            y añadí los datos faltantes de abajo
+                                        </p>
+                                    </ul>
+                                    <br>
+                                    <ul class="list-group list-group-flush" id="datosFaltantes">
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                    <!-- Menu de usuario-->
+                    <!-- <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" title="Menú de usuario" data-toggle="dropdown">
+                            <figure class="avatar avatar-sm">
+                                <img src=<?php cargarImagen() ?>
+                                class="rounded-circle"
+                                alt="imagen">
+                            </figure>
+                            <span class="ml-2 d-sm-inline d-none texto-blanco">
+                                <?php echo $_SESSION["nombre"] ?>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-big">
+                            <div class="text-center py-4">
+                                <figure class="avatar avatar-xl mb-3 border-0">
+                                    <img src=<?php cargarImagen() ?>
+                                    class="rounded-circle" alt="imagen">
+                                </figure>
+
+                                <h1 class="text-dark">
+                                    <?php echo $_SESSION["nombre"] ?>
+                                    </h4>
+                                    <hr class="hr-per">
+                                    <h4 class="text-muted">USUARIO COMERCIO</h6>
+                                        <hr class="hr-per">
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="form-group d-flex justify-content-around">
+                                    <a href="controller/destruye_sesion_cookies.php" id="a-per-2"
+                                        class="btn btn-success btn-block">CERRAR SESIÓN</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </li> -->
+                    <!--Fin del menú de usuario-->
+                </ul>
+            </div>
+            <!--Fin de la barra de navegación derecha-->
+
+        </div>
+        <!--Fin del cuerpo del header-->
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item header-toggler">
+                <a href="#" class="nav-link">
+                    <i data-feather="arrow-down"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

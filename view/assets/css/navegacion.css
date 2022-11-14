@@ -1,0 +1,86 @@
+@media (max-width: 720px) {
+    .navigation {
+        width: 250px !important;
+        /* background-image: linear-gradient(#dde2e6, #e9ecef 60%, white) !important;
+        background-repeat: no-repeat !important; */
+        /* border-right: solid 1px #007d19 !important; */
+        /* background: #7e7d7db6 !important ; */
+        color: black !important;
+        font-size: 12px !important;
+    }
+    .texto-navegacion {
+        font-size: 12px !important;
+    }
+}
+
+.header {
+    /* background-image: linear-gradient(white, #e9ecef 60%, #dde2e6) !important;
+    background-repeat: no-repeat !important; */
+    background: #f2f5f4 !important;
+    color: black !important;
+    border-bottom: solid 2px #78ac83 !important;
+}
+
+.navigation {
+    width: 250px !important;
+    /* background-image: linear-gradient(#dde2e6, #e9ecef 60%, white) !important;
+    background-repeat: no-repeat !important; */
+    border-right: solid 2px #78ac83 !important;
+    background: #00990350;
+    color: black !important;
+    box-shadow: 1px 3px 17px 3px rgba(0, 0, 0, 0.86);
+    -webkit-box-shadow: 1px 3px 17px 3px rgba(0, 0, 0, 0.86);
+    -moz-box-shadow: 1px 3px 17px 3px rgba(0, 0, 0, 0.86);
+}
+
+.navigation-menu-body {
+    margin-top: 0px !important;
+}
+
+.active {
+    background: transparent !important;
+}
+
+.texto-navegacion {
+    color: black !important;
+    /* color: white !important; */
+    font-size: larger;
+}
+
+ul,
+li,
+a {
+    font-size: 12px !important;
+}
+
+i {
+    color: #4d4d4d !important;
+    position: relative !important;
+}
+
+.suscripcion {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}

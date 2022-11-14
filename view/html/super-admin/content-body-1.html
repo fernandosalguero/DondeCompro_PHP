@@ -1,0 +1,94 @@
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="view/assets/js/negocios.js?version=1.05"></script>
+
+<!-- Content body -->
+<div class="content-body">
+    <!-- Content -->
+    <div class="content content-comercios">
+
+        <div class="page-header">
+
+            <h3 class="text-center">COMERCIOS</h3>
+
+        </div>
+
+        <div class="row" style="max-width: 90% !important;">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Buscar:</label>
+                    <input type="text" class="form-control" id="buscar" onkeyup="filtrar()"
+                        placeholder="Buscar Negocios...">
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>ORDENAR DE MANERA:</label>
+                    <select class="form-control" id="ordenar" onchange="filtrar()">
+
+                        <option value="asc">Ascendente</option>
+                        <option value="desc">Descendente</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>MOSTRAR ENTRADAS:</label>
+                    <select class="form-control" id="entradas" onchange="filtrar()">
+                        <option value="1"> 1 </option>
+                        <option value="3"> 3</option>
+                        <option value="5" selected>5</option>
+                        <option value="10">10</option>
+                        <option value="25">20</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!--Tabla de negocios-->
+        <div class="row">
+
+            <div class="col-md-8">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>IMAGEN</th>
+                            <th>NOMBRE</th>
+                            <th>CORREO</th>
+                            <th>INFO</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="negocios">
+                    </tbody>
+                </table>
+
+
+            </div>
+
+            <div class="col-md-4 columnas-usuarios">
+
+                <p class="texto-verde text-center">INFORMACIÓN DEL COMERCIO</p>
+
+                <div class="" id="comercio">
+                </div>
+
+                <p class="texto-verde text-center">SUSCRIPCIÓN</p>
+                <div id="subscripcion">
+                </div>
+            </div>
+
+
+
+        </div>
+        <!--Termina la Tabla de negocios-->
+
+    </div>
+    <!-- ./ Content -->
+</div>
+<!-- ./ Content body -->

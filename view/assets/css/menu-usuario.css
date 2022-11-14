@@ -1,0 +1,237 @@
+/* menu comparar precios */
+
+.content-body {
+    margin-bottom: 30px !important;
+}
+
+.content {
+    overflow: hidden;
+    background: transparent !important;
+    outline: none;
+    margin-top: 50px !important;
+    margin-right: 5px !important;
+    margin-left: 22% !important;
+    border: none !important;
+    color: black !important;
+}
+.content-comercios {
+    overflow: auto !important   ;
+}
+
+.buscador {
+    font-size: 14px !important;
+    padding: 10px !important;
+    width: auto !important;
+    border-bottom-right-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-right: 0px !important;
+}
+
+.buscador-boton {
+    border-bottom-left-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-left: 0px !important;
+    font-size: 14px !important;
+    padding: 10px !important;
+}
+
+.sin-productos {
+    background-color: #ff3e6cd1 !important;
+    color: #fff !important;
+}
+
+.icono-buscar-precio {
+    color: #fff !important;
+}
+
+/* resultados de busquedas de productos y comparaciones */
+
+.tarjeta-resultado-producto {
+    box-shadow: 3px 3px 5px 0px rgba(155, 150, 150, 0.75);
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(155, 150, 150, 0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(155, 150, 150, 0.75);
+    /* box-shadow: inset 0px 0px 10px 10px #ffcc3e78; */
+    margin-top: 5px !important;
+    cursor: pointer;
+}
+
+.tarjeta-aniadir-listado {
+    box-shadow: 3px 3px 5px 0px rgba(155, 150, 150, 0.75);
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(155, 150, 150, 0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(155, 150, 150, 0.75);
+    background: #ffc3005c !important;
+    margin-top: 5px !important;
+    cursor: pointer;
+}
+
+.tarjeta-promo {
+    box-shadow: inset 0px 0px 5px 2px #3eff6b78;
+}
+
+.body-resultados {
+    padding: 1rem !important;
+    color: black !important;
+    text-align: center !important;
+}
+
+.boton-aniadir-listado {
+    background: transparent !important;
+    border: none !important;
+}
+
+.boton-eliminar-listado {
+    background: transparent !important;
+    border: none !important;
+}
+
+.fa-plus,
+.fa-list-ul {
+    color: #04519b !important;
+}
+
+.fa-trash {
+    color: #c71c22 !important;
+    position: absolute !important;
+    right: 16px;
+    bottom: 16px;
+}
+
+.boton-anadir-listado {
+    color: #1c1fc7 !important;
+    position: absolute !important;
+    right: 16px;
+    bottom: 16px;
+}
+
+.lista-productos-vacia {
+    background: #ff3e6cd9 !important;
+    color: #fff !important;
+    padding: 1rem !important;
+}
+
+/* menu administrar cuenta */
+
+h3 {
+    color: black !important;
+}
+
+.btn {
+    font-style: normal !important;
+}
+
+.active {
+    /* background-color: #22c622 !important; */
+}
+
+a {
+    color: black !important;
+}
+
+.enlace-lateral {
+    color: black !important;
+}
+
+.configuracion-imagen {
+    width: 150px !important;
+}
+
+.check-icon {
+    font-size: 28px;
+    background: #565eb6 !important;
+    border: solid 4px #abb6f5 !important;
+}
+
+.card-selected {
+    box-shadow: inset 0px 0px 10px 10px #565eb685;
+    background: #ffffff !important;
+    pointer-events: none;
+}
+
+.card-available {
+    box-shadow: none !important;
+    background: #ffffff !important;
+    pointer-events: all;
+}
+
+.card-description-available {
+    color: #5f5f5f !important;
+    background: #efece1;
+}
+
+.card-description-selected {
+    color: #ffffff !important;
+    background: #565eb6;
+}
+
+.card-comparador-dc {
+    box-shadow: inset 0px 0px 10px 10px #20c42057;
+    background: #ffffff !important;
+}
+
+.card-comparador-pc {
+    box-shadow: inset 0px 0px 10px 10px #2082c457;
+    background: #ffffff !important;
+}
+
+.card-hide {
+    display: none;
+}
+
+/* resultado comparacion efecto de las tarjetas */
+
+/* 
+.flip-card {
+    width: 100% !important;
+    height: 480px !important;
+    perspective: 1000px !important;
+    margin-top: 5px !important;
+    cursor: pointer !important;
+}
+
+.flip-card-inner {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    text-align: center !important;
+    transition: transform 0.8s !important;
+    transform-style: preserve-3d !important;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg) !important;
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+}*/
+
+/* .flip-card-front {
+    background-color: white !important;
+    color: black !important;
+}
+
+.flip-card-back {
+    background-color: white !important;
+    color: black !important;
+    transform: rotateY(180deg) !important;
+} */
+
+.flip-card-front-card-comparador-pc {
+    box-shadow: inset 0px 0px 10px 10px #2082c457;
+}
+
+.flip-card-back-card-comparador-pc {
+    box-shadow: inset 0px 0px 10px 10px #2082c457;
+}
+
+.flip-card-front-card-comparador-dc {
+    box-shadow: inset 0px 0px 10px 10px #20c42057;
+}
+
+.flip-card-back-card-comparador-dc {
+    box-shadow: inset 0px 0px 10px 10px #20c42057;
+}

@@ -1,0 +1,60 @@
+.content {
+    background: transparent !important;
+    outline: none;
+    margin-top: 10px !important;
+    margin-right: 5px !important;
+    margin-left: 12% !important;
+    border: none !important;
+    color: black !important;
+}
+
+.form-control {
+    border-radius: 50px !important;
+}
+
+.add-producto {
+    color: darkblue !important;
+}
+
+.nuevo-producto {
+    border-radius: 50px !important;
+}
+
+.modal-header {
+    background-color: #E5E7E9 !important;
+}
+
+.modal-body {
+    background-color: #E5E7E9 !important;
+}
+
+.fa-times {
+    color: darkred !important;
+}
+
+.card {
+    background: transparent !important;
+    padding: 1rem !important;
+}
+
+.boton-info {
+    border-radius: 50px !important;
+}
+
+.text-area {
+    border-radius: 25px !important;
+}
+
+.configuracion-imagen {
+    width: 150px !important;
+}
+
+.titulo-menu {
+    margin-top: 30px !important;
+}
+
+.texto-negro {
+    color: black !important;
+}
+
+

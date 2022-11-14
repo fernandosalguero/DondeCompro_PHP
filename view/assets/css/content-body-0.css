@@ -1,0 +1,18 @@
+.line {
+    position: absolute;
+    width: 105px;
+    height: 10px;
+    border-bottom: 3px solid #ff0800b6;
+    top: 2px;
+    /* right:0px; */
+    transform: rotate(5deg);
+}
+.line2 {
+    position: absolute;
+    width: 105px;
+    height: 10px;
+    border-bottom: 3px solid #ff0800b6;
+    top: 2px;
+    /* right:0px; */
+    transform: rotate(355deg);
+}

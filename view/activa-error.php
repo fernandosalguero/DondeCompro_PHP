@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Error en la activacion</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/media/image/favicon.png"/>
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="vendors/bundle.css" type="text/css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="assets/css/app.min.css" type="text/css">
+</head>
+<body class="dark form-membership">
+
+<!-- begin::preloader-->
+<div class="preloader">
+    <div class="preloader-icon"></div>
+</div>
+<!-- end::preloader -->
+
+<div class="form-wrapper">
+
+   
+    <div >
+        <img src="assets/media/image/ositos/error.png" alt="image">
+    </div>
+
+
+    
+    <h5>Tuvimos un problema en la activación de tu cuenta, por favor, intenta más tarde.</h5>
+
+   
+        <a href="../index.php"><button class="btn btn-outline-success btn-block">IR A INICIO DE SESIÓN</button></a>
+
+
+</div>
+
+<!-- Plugin scripts -->
+<script src="vendors/bundle.js"></script>
+
+<!-- App scripts -->
+<script src="assets/js/app.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<div class="navigation">
+    <div class="navigation-header">
+        <span>Menu de navegación</span>
+        <a href="#">
+            <i class="ti-close"></i>
+        </a>
+    </div>
+    <div class="navigation-menu-body">
+        <ul>
+            <li>
+                <a <?php active_0() ?>href=
+                    <?php echo "index.php?page=0" ?>>
+                    <span class="nav-link-icon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                    <span class="texto-navegacion">Inicio</span>
+                </a>
+            </li>
+            <li>
+                <a <?php active_1() ?> href="index.php?page=1" ?>
+                    <span class="nav-link-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </span>
+                    <span class="texto-navegacion">Comparador de precios</span>
+                </a>
+            </li>
+
+            <li>
+                <a <?php active_2() ?> href=
+                    <?php echo "index.php?page=2" ?>>
+                    <span class="nav-link-icon">
+                        <i class="fas fa-cog "></i>
+                    </span>
+                    <span class="texto-navegacion">Administrar Cuenta</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="controller/destruye_sesion_cookies.php">
+                    <span class="nav-link-icon">
+                        <i class="fas fa-users"></i>
+                    </span>
+                    <span class="texto-navegacion">Cerrar Sesión</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+{
+    "require": {
+        "monolog/monolog": "^2.2",
+        "vlucas/phpdotenv": "^5.3",
+        "sendgrid/sendgrid": "^7.9"
+    }
+}

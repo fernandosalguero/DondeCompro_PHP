@@ -1,0 +1,43 @@
+.card-reset {
+    background: transparent !important;
+}
+
+.content-reset {
+    background: transparent !important;
+}
+
+input {
+    border-radius: 50px !important;
+}
+
+.form-control {
+    padding-left: 20px !important;
+}
+
+button, .btn-block {
+    border-radius: 50px !important;
+}
+
+.custom-checkbox-info {
+    border-radius: 50px !important;
+}
+
+a:hover {
+    color: black !important;
+}
+
+a:active {
+    color: black !important;
+}
+
+a:focus {
+    color: black !important;
+}
+
+.enlace-pagina {
+    color: black !important;
+}
+
+.opciones {
+    padding: 10px !important
+}

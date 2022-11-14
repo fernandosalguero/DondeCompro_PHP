@@ -1,0 +1,118 @@
+<script src="view/assets/js/agregar-producto.js?version=1.05"></script>
+<div class="content-body">
+    <!-- Content -->
+    <div class="content ">
+
+        <div class="page-header">
+            <div>
+                <h3 class="text-center text-uppercase">Si el producto que buscabas no está en nuestra base de datos, podés añadirlos
+                    ahora</h3>
+                <p class="texto-negro text-center m-3">Recordá que los nombres y los códigos deben ser únicos para cada
+                    producto y tenés que
+                    estar seguro antes de guardar un producto pues no podrás eliminarlo una vez que esté
+                    en el listado.
+                </p>
+
+                <p class="texto-negro text-center m-3">No utilices caracteres extraños ni símbolos, pues podría afectar
+                    el cómo el comparador de precios
+                    encontrará este producto.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="card">
+
+
+                    <div class="card-body d-flex flex-column align-items-center">
+
+                        <div class="col-md-6">
+
+                            <form action="controller/agregar_producto.php" method="POST"
+                                onsubmit="return validarAgregar()">
+
+                                <div class="form-group">
+
+                                    <label>NOMBRE</label>
+                                    <p class="texto-gris" id='pnombre'></p>
+                                    <input type="text" class="form-control" name="nombre" id='nombre'
+                                        onchange="consultarNombre()" required>
+                                    <p class="texto-gris" id="enombre"></p>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label>CÓDIGO</label>
+                                    <p class="texto-gris" id="pcodigo"></p>
+                                    <input type="text" class="form-control" name="codigo" id='codigo'
+                                        onchange="consultarCodigo()" required>
+                                    <p class="texto-gris" id="ecodigo"></p>
+
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label>CATEGORIA</label>
+                                    <select name="categoria" id="categoria" class="form-control" required>
+
+                                        <option value="Almacén">Almacén</option>
+                                        <option value="Bebes y niños">Bebes y niños</option>
+                                        <option value="Bebidas">Bebidas</option>
+                                        <option value="Carnes">Carnes</option>
+                                        <option value="Electricidad">Electricidad</option>
+                                        <option value="Ferretería">Ferretería</option>
+                                        <option value="Herramientas eléctricas">Herramientas eléctricas</option>
+                                        <option value="Herramientas manuales">Herramientas manuales</option>
+                                        <option value="Plomería">Plomería</option>
+                                        <option value="Congelados">Congelados</option>
+                                        <option value="Frutas y verduras">Frutas y verduras</option>
+                                        <option value="Lácteo">Lácteos</option>
+                                        <option value="Librería">Librería</option>
+                                        <option value="Limpieza">Limpieza</option>
+                                        <option value="Mascotas">Mascotas</option>
+                                        <option value="Perfumería">Perfumería</option>
+
+
+
+                                    </select>
+
+                                </div>
+
+                                <button class="btn btn-success btn-block"> AÑADIR </button>
+
+
+
+
+                            </form>
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <!-- Footer -->
+    <footer class="content-footer">
+
+        <div class="text-center texto-blanco">
+            © 2020 - <a href="https://dondecompro.ar/quienes-somos" id="a-per" target="_blank">DóndeCompro? </a>
+        </div>
+        <div class="text-center texto-blanco"> Todos los derechos reservados </div>
+    </footer>
+    <!-- ./ Footer -->
+</div>
